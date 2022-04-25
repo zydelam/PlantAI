@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>PlantAI</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="container">
+  <p>
+  <img id='logo' src="{{ url_for('static', filename='logo.png') }}" height="32%" width="12%">
+  <div id="prediction">
+    <form action = "{{ url_for('predict')}}" method = "POST" enctype = "multipart/form-data">
+            <div class="input-file-container">  
+            <input class="input-file" id="my-file" type="file" name="file">
+            <label tabindex="0" for="my-file" class="input-file-trigger">Select a file...</label>
+            </div>
+            <p class="file-return"></p>
+
+      <button type="submit" class="btn">Predict</button>
+   </form>
+        <div id="imagepred">
+            <img src="data:;base64,{{ res_image }}" width="250" height="250"/>
+
+
+        </div>
+
+        <div class="result">{{ result }}</div>
+  </div>
+</div>
+
+<!-- partial -->
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js'></script><script  src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
